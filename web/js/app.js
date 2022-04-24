@@ -1,52 +1,74 @@
-import { pokemonDetails } from "./api_comunication.js";
+import pokemonDetails from "./api_comunication.js";
 import HeaderComponent from "./components/HeaderComponent/HeaderComponent.js";
 import ListComponent from "./components/ListComponent/ListComponent.js";
 import PokemonComponent from "./components/PokemonComponent/PokemonComponent.js";
 
-const totalNumberOfPokemons = 898;
-const showedPokemons = 9;
-
-
-
-
-const pokemonLists = (pokemons, index) => {
-
-const pokemons = ["missingno"];
 const container = document.querySelector(".container");
-const actualIndex = 1;
+const pokemons = ["missingno"];
+const showedPokemons = 9;
+const totalNumberOfPokemons = 1126;
+let actualIndex = 1;
 
-const pokemonLists = (pokemonsToShow, index) => {
-
+const pokemonLists = (index) => {
+  const indexHeader = document.querySelector(".text--index");
   const firstRow = document.querySelector(".list--first-row");
   const secondRow = document.querySelector(".list--second-row");
   const thirdRow = document.querySelector(".list--third-row");
 
-  for (let i = 1; i < i + showedPokemons; i++) {
-
-    const pokemon = pokemonsToShow[index + i];
-
-    if (i < 4) {
-      new PokemonComponent(firstRow, pokemon);
-    } else if (i < 7) {
-      new PokemonComponent(secondRow, pokemon);
-    } else {
-      new PokemonComponent(thirdRow, pokemon);
-    }
+  for (let i = index; i < index + showedPokemons; i++) {
+    (async () => {
+      pokemons[i] = await pokemonDetails(i);
+      if (i < 3 + index) {
+        new PokemonComponent(firstRow, pokemons[i]);
+      } else if (i < 6 + index) {
+        new PokemonComponent(secondRow, pokemons[i]);
+      } else {
+        new PokemonComponent(thirdRow, pokemons[i]);
+      }
+    })();
   }
+  indexHeader.textContent = `${index} / ${totalNumberOfPokemons}`;
 };
 
-const pokedexMain = (pokemons, index) => {
+const pokedexMain = (index) => {
   new ListComponent(container);
-  pokemonLists(pokemons, index);
+  pokemonLists(index);
 };
-
-for (let i = 1; i <= totalNumberOfPokemons; i++) {
-  (async () => {
-    pokemons[i] = pokemonDetails(i);
-  })();
-}
-
-const container = document.querySelector(".container");
+const cleanMain = () => {
+  const blockMain = document.querySelector("main");
+  blockMain.remove();
+};
 
 new HeaderComponent(container);
-pokedexMain(pokemons, actualIndex);
+pokedexMain(actualIndex);
+
+const mainPageEvent = () => {
+  const mainPage = document.querySelector("h1");
+  mainPage.addEventListener("click", () => {
+    cleanMain();
+    pokedexMain(actualIndex);
+  });
+};
+const returnPageEvent = () => {
+  const returnPage = document.querySelector(".return-page");
+  returnPage.addEventListener("click", () => {
+    cleanMain();
+    if (actualIndex - showedPokemons > 0) {
+      actualIndex = -showedPokemons;
+    }
+    pokedexMain(actualIndex);
+  });
+};
+const nextPageEvent = () => {
+  const nextPage = document.querySelector(".next-page");
+  nextPage.addEventListener("click", () => {
+    cleanMain();
+    if (actualIndex + showedPokemons < totalNumberOfPokemons) {
+      actualIndex = +showedPokemons;
+    }
+    pokedexMain(actualIndex);
+  });
+};
+mainPageEvent();
+returnPageEvent();
+nextPageEvent();

@@ -7,7 +7,7 @@ class HeaderComponent extends Component {
     this.element.innerHTML = ` 
       <header>
         <div><h1>Pokedex</h1></div>
-        <div class='header--index>
+        <div class="header--index">
           <i class="return-page"
             ><img src="img/arrow.png" alt="arrow to previous page"
           /></i>
@@ -19,9 +19,7 @@ class HeaderComponent extends Component {
         <div><h2>My pokemons</h2></div>
       </header>
     `;
-
   }
-
 }
 
 export default HeaderComponent;
