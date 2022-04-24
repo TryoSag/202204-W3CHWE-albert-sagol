@@ -15,6 +15,9 @@ header {
   background-color: rgba(130, 130, 130, 0.85);
   border-bottom: 2px solid #000;
 }
+header h1 {
+  cursor: pointer;
+}
 header div:nth-child(2) {
   padding: 20px;
   display: flex;
@@ -43,6 +46,12 @@ header div:nth-child(2) {
   position: relative;
   top: 2px;
   cursor: pointer;
+}
+.main--details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
 }
 .my-pokemons-page {
   display: none;

@@ -2,6 +2,7 @@ import pokemonDetails from "./api_comunication.js";
 import HeaderComponent from "./components/HeaderComponent/HeaderComponent.js";
 import ListComponent from "./components/ListComponent/ListComponent.js";
 import PokemonComponent from "./components/PokemonComponent/PokemonComponent.js";
+import DetailsComponent from "./components/DetailsComponent/DetailsComponent.js";
 
 const container = document.querySelector(".container");
 const pokemons = ["missingno"];
@@ -42,6 +43,10 @@ const cleanMain = () => {
 new HeaderComponent(container);
 pokedexMain(actualIndex);
 
+const detailsPageEvent = (clickedId) => {
+  cleanMain();
+  new DetailsComponent(container, pokemons[clickedId]);
+};
 const mainPageEvent = () => {
   const mainPage = document.querySelector("h1");
   mainPage.addEventListener("click", () => {
@@ -72,3 +77,5 @@ const nextPageEvent = () => {
 mainPageEvent();
 returnPageEvent();
 nextPageEvent();
+
+export default detailsPageEvent;
