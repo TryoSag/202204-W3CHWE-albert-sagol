@@ -5,31 +5,29 @@ class PokemonComponent extends Component {
 
   constructor(parentElement, pokemon) {
     super(parentElement, "li", "");
-    this.pokemon = pokemon;
-
 
     this.element.innerHTML = `
       <div>
-        <img src="${this.pokemon.image}" alt="${this.pokemon.name} picture" />
-        <p>${this.pokemon.name}</p>
+        <img src="${pokemon.sprites.front_default}" alt="${pokemon.name} picture" />
+        <p>${pokemon.name}</p>
       </div>
       <div>
-        <button class="button--details pokemon-details-${this.pokemon.id}">More details</button>
-        <i class="icon--pokeball catch-pokemon-${this.pokemon.id}"
+        <button class="button--details pokemon-details-${pokemon.id}">More details</button>
+        <i class="icon--pokeball catch-pokemon-${pokemon.id}"
           ><img src="img/pokeball.png" alt="pokeball image"
         /></i>
       </div>
     `;
 
     const detailsButton = document.querySelector(
-      `pokemon-details-${this.pokemon.id}`
+      `pokemon-details-${pokemon.id}`
     );
-    detailsButton.addEventListener("click");
+    // detailsButton.addEventListener("click");
 
     const catchedPokemon = document.querySelector(
-      `catch-pokemon-${this.pokemon.id}`
+      `catch-pokemon-${pokemon.id}`
     );
-    catchedPokemon.addEventListener("click");
+    // catchedPokemon.addEventListener("click");
   }
 }
 
