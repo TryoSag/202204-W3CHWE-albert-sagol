@@ -4,6 +4,7 @@ class ListComponent extends Component {
   constructor(parentElement) {
     super(parentElement, "main", "");
 
+
     this.element.innerHTML = `
       <ul class="main__list">
         <li>

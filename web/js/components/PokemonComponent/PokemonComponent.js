@@ -7,6 +7,7 @@ class PokemonComponent extends Component {
     super(parentElement, "li", "");
     this.pokemon = pokemon;
 
+
     this.element.innerHTML = `
       <div>
         <img src="${this.pokemon.image}" alt="${this.pokemon.name} picture" />

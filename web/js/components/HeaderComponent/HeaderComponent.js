@@ -19,7 +19,9 @@ class HeaderComponent extends Component {
         <div><h2>My pokemons</h2></div>
       </header>
     `;
+
   }
+
 }
 
 export default HeaderComponent;
