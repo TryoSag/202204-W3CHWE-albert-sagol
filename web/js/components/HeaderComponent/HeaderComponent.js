@@ -4,9 +4,6 @@ class HeaderComponent extends Component {
   constructor(parentElement) {
     super(parentElement, "header", "");
 
-    render();
-  }
-  render = () => {
     this.element.innerHTML = ` 
       <header>
         <div><h1>Pokedex</h1></div>
@@ -22,7 +19,9 @@ class HeaderComponent extends Component {
         <div><h2>My pokemons</h2></div>
       </header>
     `;
-  };
+
+  }
+
 }
 
 export default HeaderComponent;

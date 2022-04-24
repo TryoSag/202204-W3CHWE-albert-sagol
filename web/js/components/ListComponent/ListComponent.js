@@ -4,9 +4,7 @@ class ListComponent extends Component {
   constructor(parentElement) {
     super(parentElement, "main", "");
 
-    render();
-  }
-  render = () => {
+
     this.element.innerHTML = `
       <ul class="main__list">
         <li>
@@ -23,7 +21,7 @@ class ListComponent extends Component {
         </li>
       </ul>
     `;
-  };
+  }
 }
 
 export default ListComponent;
