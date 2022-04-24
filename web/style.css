@@ -96,6 +96,7 @@ li div:nth-child(2) {
   height: 26px;
   text-align: center;
   background-color: rgb(220, 220, 220);
+  cursor: pointer;
 }
 main li i {
   flex: 1;

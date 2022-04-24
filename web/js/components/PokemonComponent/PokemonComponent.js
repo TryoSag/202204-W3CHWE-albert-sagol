@@ -1,15 +1,12 @@
 import Component from "../Component.js";
 
 class PokemonComponent extends Component {
+  pokemon;
+
   constructor(parentElement, pokemon) {
-    pokemon;
     super(parentElement, "li", "");
     this.pokemon = pokemon;
 
-    render();
-    addListeners();
-  }
-  render = () => {
     this.element.innerHTML = `
       <div>
         <img src="${this.pokemon.image}" alt="${this.pokemon.name} picture" />
@@ -22,8 +19,7 @@ class PokemonComponent extends Component {
         /></i>
       </div>
     `;
-  };
-  addListeners = () => {
+
     const detailsButton = document.querySelector(
       `pokemon-details-${this.pokemon.id}`
     );
@@ -33,7 +29,7 @@ class PokemonComponent extends Component {
       `catch-pokemon-${this.pokemon.id}`
     );
     catchedPokemon.addEventListener("click");
-  };
+  }
 }
 
 export default PokemonComponent;
