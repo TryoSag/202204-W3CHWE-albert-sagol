@@ -1,8 +1,7 @@
 import Component from "../Component.js";
+import detailsPageEvent from "../../app.js";
 
 class PokemonComponent extends Component {
-  pokemon;
-
   constructor(parentElement, pokemon) {
     super(parentElement, "li", "");
 
@@ -19,16 +18,15 @@ class PokemonComponent extends Component {
       </div>
     `;
 
+    const catchedPokemon = document.querySelector(
+      `.catch-pokemon-${pokemon.id}`
+    );
+    catchedPokemon.addEventListener("click", () => {});
+
     const detailsButton = document.querySelector(
       `pokemon-details-${pokemon.id}`
     );
-    // detailsButton.addEventListener("click");
-
-    const catchedPokemon = document.querySelector(
-      `catch-pokemon-${pokemon.id}`
-    );
-    // catchedPokemon.addEventListener("click");
+    detailsButton.addEventListener("click", detailsPageEvent(pokemon.id));
   }
 }
-
 export default PokemonComponent;
