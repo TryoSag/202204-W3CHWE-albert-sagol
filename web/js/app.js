@@ -6,7 +6,7 @@ import PokemonComponent from "./components/PokemonComponent/PokemonComponent.js"
 const container = document.querySelector(".container");
 const pokemons = ["missingno"];
 const showedPokemons = 9;
-const totalNumberOfPokemons = 1126;
+const totalNumberOfPokemons = 898;
 let actualIndex = 1;
 
 const pokemonLists = (index) => {
@@ -54,7 +54,7 @@ const returnPageEvent = () => {
   returnPage.addEventListener("click", () => {
     cleanMain();
     if (actualIndex - showedPokemons > 0) {
-      actualIndex = -showedPokemons;
+      actualIndex -= showedPokemons;
     }
     pokedexMain(actualIndex);
   });
@@ -64,7 +64,7 @@ const nextPageEvent = () => {
   nextPage.addEventListener("click", () => {
     cleanMain();
     if (actualIndex + showedPokemons < totalNumberOfPokemons) {
-      actualIndex = +showedPokemons;
+      actualIndex += showedPokemons;
     }
     pokedexMain(actualIndex);
   });
